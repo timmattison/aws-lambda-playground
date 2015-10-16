@@ -1,0 +1,21 @@
+{
+  "lifx": {
+    "apiKey": "YOUR_API_KEY",
+    "apiPrefix": "https://api.lifx.com/v1"
+  },
+  "button": {
+    "singleClickAction": {
+      "scene": "YOUR_SCENE_ID_1"
+    },
+    "doubleClickAction": {
+      "scene": "YOUR_SCENE_ID_2"
+    },
+    "longClickAction": {
+      "state": {
+        "selector": "group_id:YOUR_GROUP_ID",
+        "power": "on",
+        "color": "kelvin:5600 brightness:1.0"
+      }
+    }
+  }
+}
