@@ -2,8 +2,6 @@
 
 This tutorial will walk you through getting the IoT LIFX controller set up, calling it, and then tearing it down.  The commands in this tutorial assume you are in the `iot-lifx-controller` directory.
 
-**_NOTE_**: Do not forget to do step 5 - "Tear down your function" - or you may be sorry!
-
 ## Step 0: Get a re:Invent IoT button
 
 You cannot buy these.  If you do not have one you cannot do this tutorial.  However, you can hook this API up using API gateway and use it manually if you want.  It is just a bit trickier.  In the interest of brevity I will not include those steps in this tutorial
