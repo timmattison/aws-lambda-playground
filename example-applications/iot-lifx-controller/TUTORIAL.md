@@ -24,6 +24,8 @@ $ mvn clean compile test package
 
 You should get a `BUILD SUCCESS` if everything worked.
 
+If the tests fail your `application.json` file may be invalid.
+
 ## Step 3: Create the Lambda function
 
 Navigate to [step 2 of the AWS Lambda creation process](https://console.aws.amazon.com/lambda/home?region=us-east-1#/create?step=2) (step 1 is selecting a blueprint/template which we do not want to do).
