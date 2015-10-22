@@ -5,10 +5,13 @@
   },
   "button": {
     "singleClickAction": {
-      "scene": "YOUR_SCENE_ID_1"
+      "scenes": [
+        "YOUR_SCENE_ID_1",
+        "YOUR_SCENE_ID_2"
+      ]
     },
     "doubleClickAction": {
-      "scene": "YOUR_SCENE_ID_2"
+      "scene": "YOUR_SCENE_ID_3"
     },
     "longClickAction": {
       "state": {

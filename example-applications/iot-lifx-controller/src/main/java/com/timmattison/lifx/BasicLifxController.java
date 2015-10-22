@@ -2,6 +2,7 @@ package com.timmattison.lifx;
 
 import com.google.gson.Gson;
 import com.timmattison.configuration.Configuration;
+import com.timmattison.configuration.SceneRotatorPersistence;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
@@ -21,10 +22,12 @@ import java.util.Map;
  */
 public class BasicLifxController implements LifxController {
     private final Configuration configuration;
+    private final SceneRotatorPersistence sceneRotatorPersistence;
 
     @Inject
-    public BasicLifxController(Configuration configuration) {
+    public BasicLifxController(Configuration configuration, SceneRotatorPersistence sceneRotatorPersistence) {
         this.configuration = configuration;
+        this.sceneRotatorPersistence = sceneRotatorPersistence;
     }
 
     public void activateScene(Scene scene) throws IOException {
@@ -113,7 +116,21 @@ public class BasicLifxController implements LifxController {
             return;
         }
 
+        SceneList sceneList = action.getSceneList();
+
+        // Is there a list of states?
+        if (sceneList != null) {
+            // Yes, set the next scene
+            setSceneFromSceneList(sceneList);
+            return;
+        }
+
         // Action not understood, throw an exception
         throw new UnsupportedOperationException("Invalid action");
+    }
+
+    private void setSceneFromSceneList(SceneList sceneList) throws IOException {
+        // Get the next scene from our scene list and activate it
+        activateScene(sceneRotatorPersistence.getNextScene(sceneList));
     }
 }

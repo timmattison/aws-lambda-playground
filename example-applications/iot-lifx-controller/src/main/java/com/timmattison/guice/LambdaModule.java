@@ -1,8 +1,10 @@
 package com.timmattison.guice;
 
 import com.google.inject.AbstractModule;
+import com.timmattison.configuration.BasicSceneRotatorPersistence;
 import com.timmattison.configuration.Configuration;
 import com.timmattison.configuration.ConfigurationFromTypeSafe;
+import com.timmattison.configuration.SceneRotatorPersistence;
 import com.timmattison.lifx.BasicLifxController;
 import com.timmattison.lifx.LifxController;
 
@@ -17,5 +19,8 @@ public class LambdaModule extends AbstractModule {
 
         // Use the basic implementation of the LIFX controller
         bind(LifxController.class).to(BasicLifxController.class);
+
+        // Use the basic scene rotator
+        bind(SceneRotatorPersistence.class).to(BasicSceneRotatorPersistence.class);
     }
 }

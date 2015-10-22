@@ -1,8 +1,7 @@
 package com.timmattison.lifx;
 
-import com.google.common.collect.ImmutableMap;
+import com.typesafe.config.ConfigList;
 import com.typesafe.config.ConfigObject;
-import com.typesafe.config.ConfigValue;
 
 /**
  * Created by timmattison on 10/17/15.
@@ -44,5 +43,19 @@ public class Action {
 
         // Return the configuration as a state object
         return new State(innerConfigObject);
+    }
+
+    public SceneList getSceneList() {
+        // Is there a scene list in the config?
+        if (!configObject.containsKey(sceneList)) {
+            // No, return NULL
+            return null;
+        }
+
+        // Extract the state configuration
+        ConfigList innerConfigList = (ConfigList) configObject.get(sceneList);
+
+        // Return the configuration as a state object
+        return new SceneList(innerConfigList);
     }
 }
