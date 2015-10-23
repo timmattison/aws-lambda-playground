@@ -1,6 +1,7 @@
 package com.timmattison;
 
 import com.timmattison.button.ClickType;
+import com.timmattison.configuration.BasicSceneRotatorPersistence;
 import com.timmattison.configuration.Configuration;
 import com.timmattison.configuration.ConfigurationFromTypeSafe;
 import com.timmattison.lifx.*;
@@ -32,7 +33,7 @@ public abstract class ClickTest {
     @Before
     public void setup() {
         configuration = new ConfigurationFromTypeSafe();
-        lifxController = new BasicLifxController(configuration);
+        lifxController = new BasicLifxController(configuration, new BasicSceneRotatorPersistence());
     }
 
     @Test
@@ -43,12 +44,14 @@ public abstract class ClickTest {
     }
 
     @Test
-    public void clickActionStateOrSceneShouldNotBeNull() {
+    public void clickActionStateSceneOrSceneListShouldNotBeNull() {
         Action action = configuration.getAction(getClickType());
         Scene scene = action.getScene();
         State state = action.getState();
+        SceneList sceneList = action.getSceneList();
 
-        Assert.assertTrue("Either state or scene must be set", ((scene != null) || (state != null)));
+        Assert.assertTrue("Either state, scene, or scene list must be set",
+                ((scene != null) || (state != null) || (sceneList != null)));
     }
 
     @Test
